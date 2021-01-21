@@ -1,0 +1,251 @@
+# Define your item pipelines here
+#
+# Don't forget to add your pipeline to the ITEM_PIPELINES setting
+# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+
+
+# useful for handling different item types with a single interface
+from itemadapter import ItemAdapter
+# from pymongo import MongoClient 
+# import psycopg2 
+
+
+
+class AmazonPipeline:
+#     def __init__(self):
+#         self.create_connection()
+#         # self.create_table()
+#     def create_connection(self):
+#         self.conn = psycopg2.connect(
+#             host = 'localhost',
+#             database = 'testing',
+#             user = 'postgres',
+#             port = '5433',
+#             password = '12345'
+#         )
+#         self.curr = self.conn.cursor()
+
+#     # def create_table(self):
+#     #     # self.curr.execute("""DROP TABLE IF EXISTS application_product_mobile""")
+#     #     self.curr.execute("""create table application_product_mobile (
+#     #             product_id text
+#     #             product_name text,
+#     #             product_price text,
+#     #             product_image text,
+#     #             link_head text,
+#     #             product_link text
+#     #         )""")
+    def process_item(self, item, spider):
+#         self.store_db(item)
+        return item
+#     def store_db(self, item):
+#         self.curr.execute("""insert into application_product_mobile values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",(
+#             item['id'],
+#             item['product_catagory'][0],
+#             item['product_sub_catagory'][0],
+#             item['product_name'][0],
+#             item['product_features'][0],
+#             item['product_price'][0],
+#             item['product_image'][0],
+#             item['link_head'][0],
+#             item['product_link'][0],
+#             item['pro_id']
+#         ))
+#         self.curr.execute("""insert into application_productmobile values (%s,%s)""",(
+#             item['id'],
+#             item['pro_id']
+#         ))
+#         self.conn.commit()
+
+
+
+
+
+
+                                            # Sqlite3 db started
+
+# import sqlite3
+
+# class AmazonPipeline:
+#     def __init__(self):
+#         self.create_connection()
+#         # self.create_table()
+#     def create_connection(self):
+#         self.conn = sqlite3.connect("pickledb.sqlite3")
+#         self.curr = self.conn.cursor()
+#     # def create_table(self):
+#     #     # self.curr.execute("""DROP TABLE IF EXISTS application_product_mobile""")
+#     #     self.curr.execute("""create table application_product_mobile (
+#     #             product_id text
+#     #             product_name text,
+#     #             product_price text,
+#     #             product_image text,
+#     #             link_head text,
+#     #             product_link text
+#     #         )""")
+#     def process_item(self, item, spider):
+#         self.store_db(item)
+#         return item
+#     def store_db(self, item):
+#         self.curr.execute("""insert into application_product_mobile values (?,?,?,?,?,?,?,?,?)""",(
+#             item['id'],
+#             item['product_catagory'][0],
+#             item['product_sub_catagory'][0],
+#             item['product_name'][0],
+#             item['product_price'][0],
+#             item['product_image'][0],
+#             item['link_head'][0],
+#             item['product_link'][0],
+#             item['pro_id']
+#         ))
+#         self.curr.execute("""insert into application_productmobile values (?,?)""",(
+#             item['id'],
+#             item['pro_id']
+#         ))
+#         self.conn.commit()
+
+
+
+                                                        #  SQLIte3 code end
+
+
+
+
+
+
+
+
+
+
+
+
+
+#                                                           # My SQL Code srtarted
+
+
+# import mysql.connector
+# # link = 'https://www.amazon.in'
+# class AmazonPipeline:
+
+#     def __init__(self):
+#         self.create_connection()
+#         self.create_table()
+
+#     def create_connection(self):
+#         self.connection_name = mysql.connector.connect(
+#             database = 'pickledb',
+#             host = 'localhost',
+#             user = 'root',
+#             password = ''
+#         )
+#         self.mouse_cursor = self.connection_name.cursor()
+
+#     def create_table(self):
+#         self.mouse_cursor.execute("""DROP TABLE IF EXISTS product_mobile""")
+#         self.mouse_cursor.execute("""create table product_mobile(
+#                         product_name text,
+#                         product_price text,
+#                         product_image text,
+#                         link_head text,
+#                         product_link text
+#         )""")
+
+#     def process_item(self, item, spider):
+#         self.insert_into_db(item)
+#         # print(item)
+#         return item
+
+#     def insert_into_db(self,item):
+#         self.mouse_cursor.execute("""insert into product_mobile values (%s,%s,%s,%s,%s)""",(
+#             item['product_name'][0],
+#             item['product_price'][0],
+#             item['product_image'][0],
+#             item['link_head'][0],
+#             item['product_link'][0],
+#         ))
+#         self.connection_name.commit()
+
+
+
+#                                                          # mySQL Code End
+
+
+                                    # Another Method
+
+    # def open_spider(self, spider):
+    #     LOCALHOST = "localhost",
+    #     DBNAME = "pickledb",
+    #     USER = "postgres",
+    #     PORT = "",
+    #     # PORT = "49495",
+    #     # PORT = "5432",
+    #     # PORT = "5300",
+    #     PASSWORD = "12345",
+
+
+    #     self.connection_name = psycopg2.connection_nameect(
+    #     host=LOCALHOST,
+    #     database=DBNAME,
+    #     user=USER,
+    #     port =PORT,
+    #     password=PASSWORD)
+    #     print(connection_name, "connection_nameected")
+    #     # connection_name.commit()
+    #     connection_name.autocommit = True
+    #     self.cursor = self.connection_name.cursor()
+    
+    # def close_spider(self, spider):
+    #     self.cursor.close()
+    #     self.connection.close()
+
+    # def process_item(self, item, spider):
+    #     self.cursor.execute("insert into image_data(product_name,product_image) values(%s,%s)",(item['name'],item['image']))
+    #     self.connection.commit()
+    #     return item
+
+
+    # def process_item(self, item, spider):
+    #     # self.collection.insert(dict(item))
+
+    #     return item
+
+
+
+
+
+
+    # def queryQuotes( connection_name ) :
+    #     cur = connection_name.cursor()
+    #     cur.execute( """select * from image_data""" )
+    #     rows = cur.fetchall()
+
+    #     for row in rows :
+    #         print (row[1])
+
+    # # connection_name = psycopg2.connection_nameect( host=hostname, user=username, password=password, dbname=database )
+    # queryQuotes( connection_name )
+    # connection_name.close()
+
+    
+
+
+# data directory : C:\Program Files\MongoDB\Server\4.4\data\
+# log directory : C:\Program Files\MongoDB\Server\4.4\log\
+
+
+
+
+
+# def __init__(self):
+        # client is a name of connection which is to be define
+        # self.client = MongoClient(
+        #     'localhost',
+        #     27017
+        # )
+        # # self.client = MongoClient(
+        # #     'mongodb://pickle:test@1234@45.64.156.214/pickle_Product_data',
+        # #     27017
+        # # )
+        # db = self.client['pickledb']
+        # self.collection = db['pickle_prod_data']
+
